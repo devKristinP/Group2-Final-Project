@@ -6,4 +6,7 @@
   background-size: 100% 100%;
   animation: gradient 15s ease infinite;
   height: 10vh;
+  box-shadow: 1px 3px rgb(107, 104, 104);
+  text-align: center;
+  color: rgb(52, 51, 51)
 }
