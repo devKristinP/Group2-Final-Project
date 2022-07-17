@@ -1,13 +1,9 @@
-.btn{
-    box-shadow: 10px 10px darkgrey;
+.btn {
+  box-shadow: 10px 20px darkgrey;
 }
-
- button[type=button], button[type=submit], button[type=reset] {
-    background-color: #04AA6D;
-    border: none;
-    color: white;
-    padding: 16px 32px;
-    text-decoration: none;
-    margin: 4px 2px;
-    cursor: pointer;
-} 
+.banner {
+  background: linear-gradient(-45deg, #ee7752, #e33535, #23a6d5, #23d5ab);
+  background-size: 100% 100%;
+  animation: gradient 15s ease infinite;
+  height: 10vh;
+}
