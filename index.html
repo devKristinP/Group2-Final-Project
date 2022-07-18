@@ -16,25 +16,38 @@
     <!-- #1 header/title -->
     <h1 class="banner">TASK LIST</h1>
     <h3 class="ml-3 my-3">Add New Task</h3>
+    <br />
     <form class="ml-3">
-      Name:
-      <input type="text" name="Name" size="30" />
+      <div class="row">
+        <div class="col">
+          Name:
+          <br />
+          <input type="text" name="Name" size="30" />
+        </div>
+      </div>
       <br />
-      <br />
-      Description:
-      <input type="text" name="Description" size="30" />
-      <br />
+      <div class="row">
+        <div class="col">
+          Description:
+          <br />
+          <input type="text" name="Description" size="30" />
+        </div>
+      </div>
       <br />
       <div class="row">
         <div class="col">
           Assigned to:
+          <br />
           <input type="text" name="Assigned to " size="30" />
         </div>
         <br />
         <br />
+        <br />
+        <br />
         <div class="col">
           Due date:
-          <input type="text" name="Due date " size="30" />
+          <br />
+          <input type="date" name="Due date " size="30" />
         </div>
       </div>
       <br />
@@ -42,20 +55,14 @@
     </form>
   </head>
   <body>
-    <!-- #2 New tasks task name + placeholder -->
-
-    <!-- #3 task description + textbox -->
-
-    <!-- #4 Assigned to + due date -->
-    
-    <!-- #5 Add task button -->
+    <!-- Add Task Button -->
     <div class="row">
       <div class="col ml-3">
         <button type="button" class="btn btn-primary">Add Task</button>
       </div> 
     </div>
 
-    <!-- #6 Task cards section -->
+    <!-- Task cards section -->
     <div class="task-section">
       <hr style="width:40%;text-align:left;margin-left:0; border-width: 3px; border-color: teal">
     </div>
@@ -152,9 +159,6 @@
           </div>
         </div>
       </div>
-          </li>
-        </ul>
     </div>
   </body>
 </html>
-<!--commenting--> 
