@@ -11,57 +11,68 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="assets\style.css"/>
+    <script src="./script.js" defer></script>
     <title>Task Manager</title>
+  </head>
 
+  <body>
     <!-- #1 header/title -->
     <h1 class="banner">TASK LIST</h1>
     <h3 class="ml-3 my-3">Add New Task</h3>
-    <br />
-    <form class="ml-3">
-      <div class="row">
-        <div class="col">
-          Name:
-          <br />
-          <input type="text" name="Name" size="30" />
-        </div>
-      </div>
-      <br />
-      <div class="row">
-        <div class="col">
-          Description:
-          <br />
-          <input type="text" name="Description" size="30" />
-        </div>
-      </div>
-      <br />
-      <div class="row">
-        <div class="col">
-          Assigned to:
-          <br />
-          <input type="text" name="Assigned to " size="30" />
-        </div>
-        <br />
-        <br />
-        <br />
-        <br />
-        <div class="col">
-          Due date:
-          <br />
-          <input type="date" name="Due date " size="30" />
-        </div>
-      </div>
-      <br />
-      <br />
-    </form>
-  </head>
-  <body>
-    <!-- Add Task Button -->
-    <div class="row">
-      <div class="col ml-3">
-        <button type="button" class="btn btn-primary">Add Task</button>
-      </div> 
-    </div>
 
+    <div id="error"></div>
+
+    <br />
+    <form id="form" action="/" method="GET" class="ml-3">
+      <div class="row">
+        <div class="col">
+
+          <label for="name">Name:</label>
+          <br />
+          <input id="name" type="text" name="name" size="30"/>
+
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col">
+          <label for="description">Description:</label>
+          <br />
+          <input id="description" type="text" name="description" size="30" />
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col">
+          <label for="assignedTo">Assigned to:</label>
+          <br />
+          <input id="assignedTo" type="text" name="assignedTo" size="30" />
+        </div>
+
+        <br />
+        <br />
+        <br />
+        <br />
+        
+        <div class="col">
+          <label for="dueDate">Due date:</label>
+          <br />
+          <input id="dueDate" type="date" name="dueDate" size="30" />
+        </div>
+      </div>
+      <br />
+      <br />
+    
+      <!-- Add Task Button -->
+      <div class="row">
+        <div class="col ml-3">
+          <button type="submit" class="btn btn-primary">Add Task</button>
+        </div> 
+      </div>
+    </form>
+
+
+    
     <!-- Task cards section -->
     <div class="task-section">
       <hr style="width:40%;text-align:left;margin-left:0; border-width: 3px; border-color: teal">
