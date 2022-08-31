@@ -32,3 +32,6 @@ function formValidation(e) {
 };
 
 form.addEventListener('submit', formValidation);
+
+const newTask = new TaskManager();
+console.log(newTask);
