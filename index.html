@@ -11,44 +11,69 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="assets\style.css"/>
+    <script src="./script.js" defer></script>
     <title>Task Manager</title>
+  </head>
 
+  <body>
     <!-- #1 header/title -->
     <h1 class="banner">TASK LIST</h1>
-    <form>
-      Name
-      <input type="text" name="Name" size="30" />
-      <br />
-      <br />
-      Description
-      <input type="text" name="Description" size="30" />
-      <br />
-      <br />
-      Assigned to
-      <input type="text" name="Assigned to " size="30" />
-      <br />
-      <br />
-      Due date
-      <input type="text" name="Due date " size="30" />
-      <br />
-      <br />
-    </form>
-  </head>
-  <body>
-    <!-- #2 New tasks task name + placeholder -->
+    <h3 class="ml-3 my-3">Add New Task</h3>
 
-    <!-- #3 task description + textbox -->
+    <div id="error"></div>
 
-    <!-- #4 Assigned to + due date -->
+    <br />
+    <form id="form" action="/" method="GET" class="ml-3">
+      <div class="row">
+        <div class="col">
+
+          <label for="name">Name:</label>
+          <br />
+          <input id="name" type="text" name="name" size="30"/>
+
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col">
+          <label for="description">Description:</label>
+          <br />
+          <input id="description" type="text" name="description" size="30" />
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col">
+          <label for="assignedTo">Assigned to:</label>
+          <br />
+          <input id="assignedTo" type="text" name="assignedTo" size="30" />
+        </div>
+
+        <br />
+        <br />
+        <br />
+        <br />
+        
+        <div class="col">
+          <label for="dueDate">Due date:</label>
+          <br />
+          <input id="dueDate" type="date" name="dueDate" size="30" />
+        </div>
+      </div>
+      <br />
+      <br />
     
-    <!-- #5 Add task button -->
-    <div class="row">
-      <div class="col ml-3">
-        <button type="button" class="btn btn-primary">Add Task</button>
-      </div> 
-    </div>
+      <!-- Add Task Button -->
+      <div class="row">
+        <div class="col ml-3">
+          <button type="submit" class="btn btn-primary">Add Task</button>
+        </div> 
+      </div>
+    </form>
 
-    <!-- #6 Task cards section -->
+
+    
+    <!-- Task cards section -->
     <div class="task-section">
       <hr style="width:40%;text-align:left;margin-left:0; border-width: 3px; border-color: teal">
     </div>
@@ -145,9 +170,6 @@
           </div>
         </div>
       </div>
-          </li>
-        </ul>
     </div>
   </body>
 </html>
-<!--commenting--> 
