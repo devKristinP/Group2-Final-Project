@@ -5,7 +5,7 @@ function formValidation(e) {
     const description = document.getElementById('description')
     const assignedTo = document.getElementById('assignedTo')
     const dueDate = document.getElementById('dueDate')
-    const form = document.getElementById('form')
+    // const form = document.getElementById('form')
     const errorElement = document.getElementById('error')
 
     let messages = [ ]
