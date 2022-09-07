@@ -16,7 +16,7 @@ class TaskManager {
             status: 'Todo',
         }   
         this.tasks.push(task);
-        /*currently returning first task with ID of zero, will eventually show number increasing*/
+        /*may currently return first task with ID of zero, will eventually show number increasing*/
     }
 
 };
