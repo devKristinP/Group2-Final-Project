@@ -1,5 +1,5 @@
 //console.log('Hello World');
-const taskManager = new TaskManager(1);
+const taskManager = new taskManager(1);
 taskManager.addTask("Laundry", "fold", "Bob", "12/31/2022");
 taskManager.addTask("Laundry", "fold", "Bob", "12/31/2022");
 console.log(taskManager.tasks);
@@ -38,3 +38,7 @@ form.addEventListener("submit", formValidation);
 
 const newTask = new TaskManager();
 console.log(newTask);
+
+taskManager.addTask(nameValue,descriptionValue,assignedToValue,dueDateValue);
+const taskHtml = createTaskHtml('Group2', 'wash dishs','nebyu','9/20/2022');
+console.log(taskHtml);
