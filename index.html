@@ -14,11 +14,11 @@
     <script src="js/taskManager.js" defer></script>
     <script src="js/index.js" defer></script>
     
-    <title>Task Manager</title>
+   <title>Task Manager</title>
   </head>
 
   <body>
-    <!-- #1 header/title -->
+   <!--  #1 header/title 
     <h1 class="banner">TASK LIST</h1>
     <h3 class="ml-3 my-3">Add New Task</h3>
 
@@ -66,12 +66,12 @@
       <br />
     
       <!-- Add Task Button -->
-      <div class="row">
+      <!--<div class="row">
         <div class="col ml-3">
           <button type="submit" class="btn btn-primary">Add Task</button>
         </div> 
       </div>
-    </form>
+    </form>-->
 
 
 
@@ -79,11 +79,49 @@
     <div class="task-section">
       <hr style="width:40%;text-align:left;margin-left:0; border-width: 3px; border-color: teal">
     </div>
+    <div class="container">
+      <h1 class="banner">Task Manager</h1>
+      <div class="row mb-5">
+          <div class="col">
+              <h2>Add New Task</h2>
+              <form id="newTaskForm">
+                  <div class="form-group">
+                      <label for="newTaskNameInput">Name</label>
+                      <input type="text" class="form-control" id="newTaskNameInput">
+                  </div>
+                  <div class="form-group">
+                      <label for="newTaskDescription">Description</label>
+                      <textarea type="text" class="form-control" id="newTaskDescription"></textarea>
+                  </div>
+                  <div class="form-row">
+                      <div class="form-group col">
+                          <label for="newTaskAssignedTo">Assigned To</label>
+                          <input type="text" class="form-control" id="newTaskAssignedTo">
+                      </div>
+                      <div class="form-group col">
+                          <label for="newTaskDueDate">Due Date</label>
+                          <input type="date" class="form-control" id="newTaskDueDate">
+                      </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary btn-block">Add Task</button>
+              </form>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col">
+              <h2>Tasks</h2>
+              <ul class="list-group" id="tasksList">
+              </ul>
+          </div>
+          <div class="col"></div>
+      </div>
+  </div>
+    <!-- <li class="list-group-item">Dishes
     <div class="tasks">
-        <h1 class="tasks-section ml-3 mt-5">Tasks</h1>
+        <h1 class="tasks-section ml-3 mt-5"></h1>
       <div class="task-list ml-3 mt-5" style="width: 25rem">
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">Laundry
+          <li class="list-group-item">
             <div class="task-cards">
               <div class="card  border-dark border-5 my-5 ml-3" style="width: 18rem">
                 <div class="card-body">
@@ -101,7 +139,6 @@
               </div>
             </div>
           </li>
-          <li class="list-group-item">Dishes
             <div class="task-cards">
               <div class="card  border-dark border-5 my-5 ml-3" style="width: 18rem">
                 <div class="card-body">
@@ -172,6 +209,6 @@
           </div>
         </div>
       </div>
-    </div>
+    </div>-->
   </body>
 </html>
