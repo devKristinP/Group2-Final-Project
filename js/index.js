@@ -7,7 +7,7 @@
   }
 };
 */
-const taskManager = new taskManager(1);
+const taskManager = new TaskManager();
 taskManager.addTask("Laundry", "fold", "Bob", "12/31/2022");
 taskManager.addTask("Laundry", "fold", "Bob", "12/31/2022");
 console.log(taskManager.tasks);
