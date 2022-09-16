@@ -13,42 +13,8 @@ const taskManager = new TaskManager(0);
 taskManager.addTask("Laundry", "fold", "Bob", "12/31/2022");
 taskManager.addTask("Laundry", "fold", "Bob", "12/31/2022");
 console.log(taskManager.tasks);
-function formValidation(e) {
-  const name = document.getElementById("name");
-  const description = document.getElementById("description");
-  const assignedTo = document.getElementById("assignedTo");
-  const dueDate = document.getElementById("dueDate");
-  const form = document.getElementById('form')
-  const errorElement = document.getElementById("error");
 
-  /*let messages = [];
-  if (name.value === "" || name.value == null) {
-    messages.push("Name is required");
-  }
-
-  if (description.value === "" || description.value == null) {
-    messages.push("Enter Description for task");
-  }
-
-  if (assignedTo.value === "" || assignedTo.value == null) {
-    messages.push("Task must be assigned");
-  }
-
-  if (dueDate.value === "" || dueDate.value == null) {
-    messages.push("Enter a due date");
-  }
-
-  if (messages.length > 0) {
-    e.preventDefault();
-    errorElement.innerHTML = messages.join(", ");
-  }*/
-
-
-form.addEventListener("submit", formValidation);
-
-const newTask = new taskManager();
-console.log(newTask);
-
+  
 
 //const tasksList = document.querySelector('#tasksList');
 
@@ -71,10 +37,32 @@ newTaskForm.addEventListener('submit', (event) => {
     const newTaskDueDate = document.querySelector('#newTaskdueDate');
 
     
-    /*
-        Validation code here
-    */
-
+    
+       // Validation code here - 
+    
+        let messages = [];
+        if (newTaskName.value == ""/* || newTaskName.value == null*/) {
+          messages.push("Name is required");
+        }
+      
+        if (newTaskDescription.value == "" /*|| newTaskDescription.value == null*/) {
+          messages.push("Enter Description for task");
+        }
+      
+        if (newTaskAssignedTo.value == "" /*|| newTaskAssignedTo.value == null*/) {
+          messages.push("Task must be assigned");
+        }
+      
+       if (newTaskDueDate.value == "" /*|| newTaskDueDate.value == null*/) {
+          messages.push("Enter a due date");
+        }
+      
+        if (messages.length > 0) {
+          e.preventDefault();
+          const errorElement = document.querySelector('#errorElement');
+          errorElement.innerHTML = messages.join(", ");
+        }
+        
     // Get the values of the inputs
     const name = newTaskNameInput.value;
     const description = newTaskDescription.value;
@@ -86,15 +74,6 @@ newTaskForm.addEventListener('submit', (event) => {
     }else{
         errorMessage.style.display = "none"
     }*/
-
-});
-
-/*function validFormFieldInput(data){
-    return data !== null && data !== '';
-}*/
-
-// Add the task to the task manager
-
 taskManager.addTask(name, description, assignedTo, dueDate);
 
 //taskManager.addTask(nameValue,descriptionValue,assignedToValue,dueDateValue);
@@ -108,19 +87,24 @@ taskManager.addTask(name, description, assignedTo, dueDate);
 // Render the tasks
 taskManager.render();
 
-const createTaskHtml = (id, name, description, assignedTo, dueDate, status) => `
-   <li class="list-group-item" data-task-id=${id}>
-   </l>
-`;
 
-// Add the task to the task manager
-taskManager.addTask(name, description, assignedTo, dueDate);
+
+
 
 // Clear the form
 newTaskNameInput.value = '';
 newTaskDescription.value = '';
 newTaskAssignedTo.value = '';
 newTaskDueDate.value = '';
+});
+
+/*function validFormFieldInput(data){
+    return data !== null && data !== '';
+}*/
+
+// Add the task to the task manager
+
+
 
 // Select the Tasks List
 const tasksList = document.querySelector('#tasksList');
@@ -153,4 +137,4 @@ tasksList.addEventListener('click', (event) => {
     }
   });
 
-}
+
