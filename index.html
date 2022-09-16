@@ -6,17 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--bootstrap CSS-->
     <link
-      rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
-   
-    <link rel="stylesheet" href="assets\style.css"/>
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
 
-    
-   <title>Task Manager</title>
+    <link rel="stylesheet" href="assets\style.css" />
+
+    <title>Task Manager</title>
   </head>
 
   <body>
-   <!--  #1 header/title 
+    <!--  #1 header/title 
     <h1 class="banner">TASK LIST</h1>
     <h3 class="ml-3 my-3">Add New Task</h3>
 
@@ -63,8 +70,8 @@
       <br />
       <br />
     -->
-      <!-- Add Task Button -->
-      <!--<div class="row">
+    <!-- Add Task Button -->
+    <!--<div class="row">
         <div class="col ml-3">
           <button type="submit" class="btn btn-primary">Add Task</button>
         </div> 
@@ -73,47 +80,70 @@
 
     <!-- Task cards section -->
     <div class="task-section">
-      <hr style="width:40%;text-align:left;margin-left:0; border-width: 3px; border-color: rgb(238, 242, 242)">
+      <hr
+        style="
+          width: 40%;
+          text-align: left;
+          margin-left: 0;
+          border-width: 3px;
+          border-color: rgb(238, 242, 242);
+        "
+      />
     </div>
 
-    <div id='errorElement'></div>
+    <div id="errorElement"></div>
     <div class="container">
       <h1 class="banner">Task Manager</h1>
       <div class="row mb-5">
-          <div class="col">
-              <h2>Add New Task</h2>
-              <form id="newTaskForm">
-                  <div class="form-group">
-                      <label for="newTaskNameInput">Name</label>
-                      <input type="text" class="form-control" id="newTaskNameInput">
-                  </div>
-                  <div class="form-group">
-                      <label for="newTaskDescription">Description</label>
-                      <textarea type="text" class="form-control" id="newTaskDescription"></textarea>
-                  </div>
-                  <div class="form-row">
-                      <div class="form-group col">
-                          <label for="newTaskAssignedTo">Assigned To</label>
-                          <input type="text" class="form-control" id="newTaskAssignedTo">
-                      </div>
-                      <div class="form-group col">
-                          <label for="newTaskDueDate">Due Date</label>
-                          <input type="date" class="form-control" id="newTaskDueDate">
-                      </div>
-                  </div>
-                  <button type="submit" class="btn btn-primary btn-block">Add Task</button>
-              </form>
-          </div>
+        <div class="col">
+          <h2>Add New Task</h2>
+          <form id="newTaskForm">
+            <div class="form-group">
+              <label for="newTaskNameInput">Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="newTaskNameInput"
+                name="name"
+              />
+            </div>
+            <div class="form-group">
+              <label for="newTaskDescription">Description</label>
+              <textarea
+                type="text"
+                name="description"
+                class="form-control"
+                id="newTaskDescription"
+              ></textarea>
+            </div>
+            <div class="form-row">
+              <div class="form-group col">
+                <label for="newTaskAssignedTo">Assigned To</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="newTaskAssignedTo"
+                />
+              </div>
+              <div class="form-group col">
+                <label for="newTaskDueDate">Due Date</label>
+                <input type="date" class="form-control" id="newTaskDueDate" />
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">
+              Add Task
+            </button>
+          </form>
+        </div>
       </div>
       <div class="row">
-          <div class="col">
-              <h2>Tasks</h2>
-              <ul class="list-group" id="tasksList">
-              </ul>
-          </div>
-          <div class="col"></div>
+        <div class="col">
+          <h2>Tasks</h2>
+          <ul class="list-group" id="tasksList"></ul>
+        </div>
+        <div class="col"></div>
       </div>
-  </div>
+    </div>
     <!-- <li class="list-group-item">Dishes
     <div class="tasks">
         <h1 class="tasks-section ml-3 mt-5"></h1>
@@ -209,9 +239,7 @@
       </div>
     </div>-->
 
-      <script src="js/taskManager.js" defer></script>
-      <script src="js/index.js" defer></script>
-
-
+    <script src="js/taskManager.js" defer></script>
+    <script src="js/index.js" defer></script>
   </body>
 </html>
