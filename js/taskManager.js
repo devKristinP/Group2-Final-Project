@@ -1,25 +1,3 @@
-/*function createTaskHtml(name, description, assignedTo, dueDate) {
-    const html = `<li class="list-group-item">Dishes
-    <div class="task-cards">
-      <div class="card  border-dark border-5 my-5 ml-3" style="width: 18rem">
-        <div class="card-body">
-          <ul class="card-text" style="list-style: none">
-            <div class="d-flex justify-content-end">
-              <input class="form-check-input" type="checkbox" />
-            </div>
-            <li>Task Name${name}</li>
-            <li>Task Description${description}</li>
-            <li>Assigned To${assignedTo}</li>
-            <li>Due Date${dueDate}</li>
-            <li>Status</li>
-            console.log(html);
- 
-       <div class="d-flex w-100 justify-content-end">
-       <button class="btn btn-outline-success done-button ${status === 'TODO' ? 'visible' : 'invisible'}">Mark As Done</button>
-        </div>`
-}*/
-
-//add delete button
 const createTaskHtml = (id, name, description, assignedTo, dueDate, status) => `
     <li class="list-group-item" data-task-id=${id}>
         <div class="d-flex w-100 mt-2 justify-content-between align-items-center">
@@ -62,7 +40,6 @@ class TaskManager {
     /*may currently return first task with ID of zero, will eventually show number increasing*/
   }
   // Create the deleteTask method
-
   deleteTask(taskId) {
     // Create an empty array and store it in a new variable, newTasks
     const newTasks = [];
@@ -83,11 +60,9 @@ class TaskManager {
   getTaskById(taskId) {
     // Create a variable to store the found task
     let foundTask;
-
     // Loop over the tasks and find the task with the id passed as a parameter
     for (let i = 0; i < this.tasks.length; i++) {
       // Get the current task in the loop
-
       const task = this.tasks[i];
       // kp changed task.id === task     to     task.id === taskId
       // Check if its the right task by comparing the task's id to the id passed as a parameter
@@ -113,8 +88,8 @@ class TaskManager {
       // Format the date
       const date = new Date(task.dueDate);
       const formattedDate =
-        date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
-
+        date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear();
+      // date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
       // Create the task html
       const taskHtml = createTaskHtml(
         task.id,
