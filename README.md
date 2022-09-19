@@ -2,7 +2,7 @@
 
 
 Group 2, Final Project jwd_nat_flx_004_students
-Members: Aditi, Kristin,Nebyu, Lakeitha
+Members: Aditi, Kristin, Nebyu, Anthony
 
 It is a Task Manager form. A final project to fulfill Geration USA graduation This project was build using: • Html • Css • JavaScript
 
