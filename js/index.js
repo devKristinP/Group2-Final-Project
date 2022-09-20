@@ -1,3 +1,5 @@
+import { TaskManager } from "./taskManager.js"
+
 //console.log('Hello World');
 /*class TaskManager {
 
@@ -115,7 +117,9 @@ tasksList.addEventListener("click", (event) => {
     const parentTask = event.target.parentElement.parentElement
 
     // Get the taskId of the parent Task.
+    console.log("number before taskId", parentTask.dataset.taskId)
     const taskId = Number(parentTask.dataset.taskId)
+    console.log("number from taskId", taskId)
 
     // Get the task from the TaskManager using the taskId
     const task = taskManager.getTaskById(taskId)
