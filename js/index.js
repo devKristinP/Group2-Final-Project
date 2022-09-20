@@ -88,9 +88,6 @@ newTaskForm.addEventListener("submit", (event) => {
   // Save the tasks to localStorage
   //taskManager.save();
 
-  // Render the tasks
-  taskManager.render()
-
   // Clear the form
   newTaskNameInput.value = ""
   newTaskDescription.value = ""
@@ -114,7 +111,7 @@ tasksList.addEventListener("click", (event) => {
   if (event.target.classList.contains("done-button")) {
     // Get the parent Task
 
-    const parentTask = event.target.parentElement.parentElement
+    const parentTask = event.target.closest(".list-group-item")
 
     // Get the taskId of the parent Task.
     console.log("number before taskId", parentTask.dataset.taskId)
@@ -122,15 +119,10 @@ tasksList.addEventListener("click", (event) => {
     console.log("number from taskId", taskId)
 
     // Get the task from the TaskManager using the taskId
-    const task = taskManager.getTaskById(taskId)
+    taskManager.markTaskDone(taskId)
 
-    // Update the task status to 'DONE'
-    task.status = "DONE"
-
-    // Save the tasks to localStorage
-    taskManager.save()
-
-    // Render the tasks
-    taskManager.render()
+    /**
+     * removed manual save() and render() calls
+     */
   }
 })
