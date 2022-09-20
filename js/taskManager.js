@@ -19,7 +19,7 @@ const createTaskHtml = (id, name, description, assignedTo, dueDate, status) => {
     <div class="d-flex w-100 justify-content-end">
         <button class="btn btn-outline-success done-button mr-1 ${
           status === "TODO" ? "visible" : "invisible"
-        }">Mark As Done</button>
+        }">Mark As Done</button> &nbsp;
         <button class="btn btn-outline-danger delete-button">Delete</button>
     </div>
 </li>
@@ -35,6 +35,7 @@ export class TaskManager {
     /**
      *  store storage key prefix in private field
      */
+
     this.#storageKey = storageKey
 
     this.#loadState()
@@ -81,6 +82,7 @@ export class TaskManager {
     /**
      *  make a change, save our stuff
      */
+
     this.#render()
   }
   // Create the deleteTask method
@@ -111,6 +113,7 @@ export class TaskManager {
     /**
      *  make a change, save our stuff
      */
+
     this.#render()
   }
 
@@ -167,6 +170,7 @@ export class TaskManager {
   #render() {
     this.#saveState()
     console.log("render()::", this.#tasks)
+
     // Create an array to store the tasks' HTML
     const tasksHtmlList = []
 
