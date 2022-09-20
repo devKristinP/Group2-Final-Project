@@ -46,7 +46,7 @@ export class TaskManager {
      *  attempt to load saved tasks array and assign to private field
      */
     try {
-      this.#tasks = JSON.parse(localStorage.getItem(this.#storageKey)) //.filter((todo) => !todo.id)
+      this.#tasks = JSON.parse(localStorage.getItem(this.#storageKey)) || []
     } catch (err) {
       this.#tasks = []
     }
@@ -54,7 +54,7 @@ export class TaskManager {
     this.#nextId =
       this.#tasks.reduce((max, num) => (max > num ? max : num), 0) + 1
 
-    this.#render()
+    this.#saveState()
   }
 
   #saveState() {
@@ -63,6 +63,8 @@ export class TaskManager {
     console.log("#saveState()::", this.#tasks)
 
     localStorage.setItem(this.#storageKey, JSON.stringify(this.#tasks))
+
+    this.#render()
   }
 
   // Method-- creating a task object and the key value pairs
@@ -83,7 +85,7 @@ export class TaskManager {
      *  make a change, save our stuff
      */
 
-    this.#render()
+    this.#saveState()
   }
   // Create the deleteTask method
 
@@ -114,7 +116,7 @@ export class TaskManager {
      *  make a change, save our stuff
      */
 
-    this.#render()
+    this.#saveState()
   }
 
   markTaskDone(taskId) {
@@ -130,7 +132,7 @@ export class TaskManager {
       }
     }
 
-    this.#render()
+    this.#saveState()
   }
 
   // # prefix makes it private field, thus inaccessible from outside the instance
@@ -168,7 +170,6 @@ export class TaskManager {
 
   // Create the render method
   #render() {
-    this.#saveState()
     console.log("render()::", this.#tasks)
 
     // Create an array to store the tasks' HTML
