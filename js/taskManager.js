@@ -1,4 +1,5 @@
 //add delete button
+
 const createTaskHtml = (id, name, description, assignedTo, dueDate, status) => {
   console.log("createTaskHtml", id)
 
@@ -68,6 +69,7 @@ export class TaskManager {
 
     this.#saveState()
     this.render()
+
   }
   // Method-- creating a task object and the key value pairs
   addTask(name, description, assignedTo, dueDate) {
@@ -78,6 +80,7 @@ export class TaskManager {
       assignedTo: assignedTo,
       dueDate: dueDate,
       status: "TODO",
+
     }
 
     this.#tasks.push(task)
@@ -87,21 +90,25 @@ export class TaskManager {
      *  make a change, save our stuff
      */
     this.#saveState()
+
   }
   // Create the deleteTask method
 
   deleteTask(taskId) {
     // Create an empty array and store it in a new variable, newTasks
-    const newTasks = []
+    const newTasks = [];
 
     //looping over the tasks
+
     for (let i = 0; i < this.#tasks.length; i++) {
       const task = this.#tasks[i]
 
+
       if (task.id !== taskId) {
-        newTasks.push(task)
+        newTasks.push(task);
       }
     }
+
 
     //set this.#tasks to newTasks
     this.#tasks = newTasks
@@ -116,37 +123,43 @@ export class TaskManager {
      *  make a change, save our stuff
      */
     this.#saveState()
+
   }
 
   // # prefix makes it private field, thus inaccessible from outside the instance
   #saveState() {
     // stuff gets saved here
+
     localStorage.setItem(
       this.#storageKeyPrefix + "-todos",
       JSON.stringify(this.#tasks)
     )
+
   }
 
   getTaskById(taskId) {
     console.log("getTaskById:", taskId)
     // Create a variable to store the found task
-    let foundTask
+    let foundTask;
 
     // Loop over the tasks and find the task with the id passed as a parameter
     for (let i = 0; i < this.#tasks.length; i++) {
       // Get the current task in the loop
 
+
       const task = this.#tasks[i]
+
       // kp changed task.id === task     to     task.id === taskId
       // Check if its the right task by comparing the task's id to the id passed as a parameter
       if (task.id === taskId) {
         // Store the task in the foundTask variable
-        foundTask = task
+        foundTask = task;
       }
     }
 
     console.log("foundTask", foundTask)
     // Return the found task
+
     return foundTask
 
     /**
@@ -154,22 +167,27 @@ export class TaskManager {
      *
      *  return this.#tasks.find(todo => todo.id === taskId)
      */
+
   }
   // Create the render method
   render() {
     console.log("render()::", this.#tasks)
     // Create an array to store the tasks' HTML
-    const tasksHtmlList = []
+    const tasksHtmlList = [];
 
     // Loop over our tasks and create the html, storing it in the array
     for (let i = 0; i < this.#tasks.length; i++) {
       // Get the current task in the loop
+
       const task = this.#tasks[i]
 
+
       // Format the date
-      const date = new Date(task.dueDate)
+      const date = new Date(task.dueDate);
       const formattedDate =
-        date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear()
+
+        date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear();
+
 
       // Create the task html
       const taskHtml = createTaskHtml(
@@ -179,13 +197,14 @@ export class TaskManager {
         task.assignedTo,
         formattedDate,
         task.status
-      )
+      );
 
       // Push it to the tasksHtmlList array
-      tasksHtmlList.push(taskHtml)
+      tasksHtmlList.push(taskHtml);
     }
 
     // Create the tasksHtml by joining each item in the tasksHtmlList
+
 
     const tasksHtml = tasksHtmlList.join("\n")
 
@@ -209,4 +228,5 @@ export class TaskManager {
    *  pulling data off a backend server or whatever and wanted to update
    *  with fresh state during runtime
    */
+
 }
