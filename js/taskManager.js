@@ -125,7 +125,7 @@ class TaskManager {
       // Format the date
       const date = new Date(task.dueDate);
       const formattedDate =
-        date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+        date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear();
 
       // Create the task html
       const taskHtml = createTaskHtml(
