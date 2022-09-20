@@ -9,7 +9,7 @@ import { TaskManager } from "./taskManager.js"
   }
 };
 */
-const taskManager = new TaskManager(0)
+const taskManager = new TaskManager()
 
 //taskManager.addTask("Laundry", "fold", "Bob", "12/31/2022");
 //taskManager.addTask("Laundry", "fold", "Bob", "12/31/2022");

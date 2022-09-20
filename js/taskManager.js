@@ -27,51 +27,43 @@ const createTaskHtml = (id, name, description, assignedTo, dueDate, status) => {
 }
 
 export class TaskManager {
-  #storageKeyPrefix = "tasks-app"
+  #storageKey = "tasks-app"
   #nextId = 0
   #tasks = []
 
-  constructor(storageKeyPrefix = "tasks-app") {
+  constructor(storageKey = "tasks-app") {
     /**
      *  store storage key prefix in private field
      */
-    this.#storageKeyPrefix = storageKeyPrefix
+    this.#storageKey = storageKey
 
+    this.#loadState()
+  }
+
+  #loadState() {
     /**
      *  attempt to load saved tasks array and assign to private field
      */
     try {
-      const gotTodos = localStorage.getItem(this.#storageKeyPrefix + "-todos")
-
-      console.log("gotTodos", gotTodos)
-
-      const parsedTasks = JSON.parse(
-        localStorage.getItem(this.#storageKeyPrefix + "-todos") || "[]"
-      ).filter((todo) => !todo.id)
-
-      this.#tasks = parsedTasks
-
-      /**
-       *  get the maximum id in the todos array and add one for the next id
-       */
-      this.nextId =
-        this.#tasks.reduce((max, num) => (max > num ? max : num), 0) + 1
-
-      console.log("this.#tasks", this.#tasks)
+      this.#tasks = JSON.parse(localStorage.getItem(this.#storageKey)) //.filter((todo) => !todo.id)
     } catch (err) {
-      /**
-       *  if that throws (like the json is malformed or not there) and
-       *  assign it to the private field
-       */
       this.#tasks = []
-      this.nextId = 1
-      console.log("oops, errr: ", err)
-      console.log("this.#tasks set to []", this.#tasks)
     }
 
-    this.#saveState()
+    this.#nextId =
+      this.#tasks.reduce((max, num) => (max > num ? max : num), 0) + 1
+
     this.#render()
   }
+
+  #saveState() {
+    // stuff gets saved here
+
+    console.log("#saveState()::", this.#tasks)
+
+    localStorage.setItem(this.#storageKey, JSON.stringify(this.#tasks))
+  }
+
   // Method-- creating a task object and the key value pairs
   addTask(name, description, assignedTo, dueDate) {
     const task = {
@@ -89,7 +81,6 @@ export class TaskManager {
     /**
      *  make a change, save our stuff
      */
-    this.#saveState()
     this.#render()
   }
   // Create the deleteTask method
@@ -120,15 +111,19 @@ export class TaskManager {
     /**
      *  make a change, save our stuff
      */
-    this.#saveState()
+    this.#render()
   }
 
   markTaskDone(taskId) {
     for (let i = 0; i < this.#tasks.length; i++) {
       const task = this.#tasks[i]
 
+      console.log("markTaskDone(" + taskId + ")")
+      console.log("before:", JSON.stringify(this.#tasks[i]))
+
       if (task.id === taskId) {
-        return (this.#tasks[i].status = "DONE")
+        this.#tasks[i].status = "DONE"
+        break
       }
     }
 
@@ -136,14 +131,6 @@ export class TaskManager {
   }
 
   // # prefix makes it private field, thus inaccessible from outside the instance
-  #saveState() {
-    // stuff gets saved here
-
-    localStorage.setItem(
-      this.#storageKeyPrefix + "-todos",
-      JSON.stringify(this.#tasks)
-    )
-  }
 
   getTaskById(taskId) {
     console.log("getTaskById:", taskId)
@@ -175,8 +162,10 @@ export class TaskManager {
      *  return this.#tasks.find(todo => todo.id === taskId)
      */
   }
+
   // Create the render method
   #render() {
+    this.#saveState()
     console.log("render()::", this.#tasks)
     // Create an array to store the tasks' HTML
     const tasksHtmlList = []
@@ -213,6 +202,10 @@ export class TaskManager {
     // Set the inner html of the tasksList on the page
     const tasksList = document.querySelector("#tasksList")
     tasksList.innerHTML = tasksHtml
+
+    const tasksListbutthole = document.getElementById("tasksList")
+    console.log("#render", tasksListbutthole)
+    document.getElementById("tasksList").innerHTML = tasksHtml
 
     /**
      *   let's chat about the alternative to this one after the program
