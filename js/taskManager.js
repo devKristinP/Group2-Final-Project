@@ -1,7 +1,7 @@
 //add delete button
 
 const createTaskHtml = (id, name, description, assignedTo, dueDate, status) => {
-  console.log("createTaskHtml", id)
+  console.log("createTaskHtml", id);
 
   return `
 <li class="list-group-item" data-task-id=${id}>
@@ -19,58 +19,58 @@ const createTaskHtml = (id, name, description, assignedTo, dueDate, status) => {
     <div class="d-flex w-100 justify-content-end">
         <button class="btn btn-outline-success done-button mr-1 ${
           status === "TODO" ? "visible" : "invisible"
-        }">Mark As Done</button>
+        }">Mark As Done</button> &nbsp;
         <button class="btn btn-outline-danger delete-button">Delete</button>
     </div>
 </li>
-`
-}
+`;
+};
 
 export class TaskManager {
-  #storageKeyPrefix = "tasks-app"
-  #nextId = 0
-  #tasks = []
+  #storageKeyPrefix = "tasks-app";
+  #nextId = 0;
+  #tasks = [];
 
   constructor(storageKeyPrefix = "tasks-app") {
     /**
      *  store storage key prefix in private field
      */
-    this.#storageKeyPrefix = storageKeyPrefix
+    this.#storageKeyPrefix = storageKeyPrefix;
 
     /**
      *  attempt to load saved tasks array and assign to private field
      */
     try {
-      const gotTodos = localStorage.getItem(this.#storageKeyPrefix + "-todos")
+      const gotTodos = localStorage.getItem(this.#storageKeyPrefix + "-todos");
 
-      console.log("gotTodos", gotTodos)
+      console.log("gotTodos", gotTodos);
 
       const parsedTasks = JSON.parse(
         localStorage.getItem(this.#storageKeyPrefix + "-todos") || "[]"
-      ).filter((todo) => !todo.id)
+      ).filter((todo) => !todo.id);
 
-      this.#tasks = parsedTasks
+      this.#tasks = parsedTasks;
 
       /**
        *  get the maximum id in the todos array and add one for the next id
        */
       this.nextId =
-        this.#tasks.reduce((max, num) => (max > num ? max : num), 0) + 1
+        this.#tasks.reduce((max, num) => (max > num ? max : num), 0) + 1;
 
-      console.log("this.#tasks", this.#tasks)
+      console.log("this.#tasks", this.#tasks);
     } catch (err) {
       /**
        *  if that throws (like the json is malformed or not there) and
        *  assign it to the private field
        */
-      this.#tasks = []
-      this.nextId = 1
-      console.log("oops, errr: ", err)
-      console.log("this.#tasks set to []", this.#tasks)
+      this.#tasks = [];
+      this.nextId = 1;
+      console.log("oops, errr: ", err);
+      console.log("this.#tasks set to []", this.#tasks);
     }
 
-    this.#saveState()
-    this.#render()
+    this.#saveState();
+    this.#render();
   }
   // Method-- creating a task object and the key value pairs
   addTask(name, description, assignedTo, dueDate) {
@@ -81,35 +81,35 @@ export class TaskManager {
       assignedTo: assignedTo,
       dueDate: dueDate,
       status: "TODO",
-    }
+    };
 
-    this.#tasks.push(task)
+    this.#tasks.push(task);
     /*may currently return first task with ID of zero, will eventually show number increasing*/
 
     /**
      *  make a change, save our stuff
      */
-    this.#saveState()
-    this.#render()
+    this.#saveState();
+    this.#render();
   }
   // Create the deleteTask method
 
   deleteTask(taskId) {
     // Create an empty array and store it in a new variable, newTasks
-    const newTasks = []
+    const newTasks = [];
 
     //looping over the tasks
 
     for (let i = 0; i < this.#tasks.length; i++) {
-      const task = this.#tasks[i]
+      const task = this.#tasks[i];
 
       if (task.id !== taskId) {
-        newTasks.push(task)
+        newTasks.push(task);
       }
     }
 
     //set this.#tasks to newTasks
-    this.#tasks = newTasks
+    this.#tasks = newTasks;
 
     /**
      *   alternative to the above, which is cleaner, i think
@@ -120,19 +120,20 @@ export class TaskManager {
     /**
      *  make a change, save our stuff
      */
-    this.#saveState()
+    this.#saveState();
   }
 
   markTaskDone(taskId) {
     for (let i = 0; i < this.#tasks.length; i++) {
-      const task = this.#tasks[i]
+      const task = this.#tasks[i];
 
       if (task.id === taskId) {
-        return (this.#tasks[i].status = "DONE")
+        this.#tasks[i].status = "DONE";
+        break;
       }
     }
 
-    this.#render()
+    this.#render();
   }
 
   // # prefix makes it private field, thus inaccessible from outside the instance
@@ -142,32 +143,32 @@ export class TaskManager {
     localStorage.setItem(
       this.#storageKeyPrefix + "-todos",
       JSON.stringify(this.#tasks)
-    )
+    );
   }
 
   getTaskById(taskId) {
-    console.log("getTaskById:", taskId)
+    console.log("getTaskById:", taskId);
     // Create a variable to store the found task
-    let foundTask
+    let foundTask;
 
     // Loop over the tasks and find the task with the id passed as a parameter
     for (let i = 0; i < this.#tasks.length; i++) {
       // Get the current task in the loop
 
-      const task = this.#tasks[i]
+      const task = this.#tasks[i];
 
       // kp changed task.id === task     to     task.id === taskId
       // Check if its the right task by comparing the task's id to the id passed as a parameter
       if (task.id === taskId) {
         // Store the task in the foundTask variable
-        foundTask = task
+        foundTask = task;
       }
     }
 
-    console.log("foundTask", foundTask)
+    console.log("foundTask", foundTask);
     // Return the found task
 
-    return foundTask
+    return foundTask;
 
     /**
      *  alternative to above
@@ -177,20 +178,20 @@ export class TaskManager {
   }
   // Create the render method
   #render() {
-    console.log("render()::", this.#tasks)
+    console.log("render()::", this.#tasks);
     // Create an array to store the tasks' HTML
-    const tasksHtmlList = []
+    const tasksHtmlList = [];
 
     // Loop over our tasks and create the html, storing it in the array
     for (let i = 0; i < this.#tasks.length; i++) {
       // Get the current task in the loop
 
-      const task = this.#tasks[i]
+      const task = this.#tasks[i];
 
       // Format the date
-      const date = new Date(task.dueDate)
+      const date = new Date(task.dueDate);
       const formattedDate =
-        date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear()
+        date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear();
 
       // Create the task html
       const taskHtml = createTaskHtml(
@@ -200,19 +201,19 @@ export class TaskManager {
         task.assignedTo,
         formattedDate,
         task.status
-      )
+      );
 
       // Push it to the tasksHtmlList array
-      tasksHtmlList.push(taskHtml)
+      tasksHtmlList.push(taskHtml);
     }
 
     // Create the tasksHtml by joining each item in the tasksHtmlList
 
-    const tasksHtml = tasksHtmlList.join("\n")
+    const tasksHtml = tasksHtmlList.join("\n");
 
     // Set the inner html of the tasksList on the page
-    const tasksList = document.querySelector("#tasksList")
-    tasksList.innerHTML = tasksHtml
+    const tasksList = document.querySelector("#tasksList");
+    tasksList.innerHTML = tasksHtml;
 
     /**
      *   let's chat about the alternative to this one after the program
